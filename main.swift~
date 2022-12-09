@@ -1,0 +1,31 @@
+var un = unsortedIntegers
+var passes = 0
+var passcount = 0
+var swapss = 0
+var swapst = 0
+
+// Prints the passes, swaps and array before it starts sorting
+print("Pass: \(passes), Swaps: \(swapss)/\(swapst), Array: \(un)")  
+// used to fix issue where it would print pass 0 twice 
+passes += 1
+
+for i in 0 ..< un.count - 1 {
+    var l = i
+    for j in i + 1 ..< un.count {
+        if un[j] < un[l] {
+            l = j
+        }
+    }
+    if i != l {
+        un.swapAt(i, l)
+    }
+    swapss += 1
+    swapst += 1
+    passcount += 1
+    if passcount >= 0  {
+        print("Pass: \(passes), Swaps: \(swapss)/\(swapst), Array: \(un)")
+        passes += 1
+        passcount -= 1
+        swapss = 0
+    }
+}
